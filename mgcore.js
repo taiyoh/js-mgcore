@@ -81,8 +81,8 @@
 		 list: new Array,
 		 default_order: '',
 		 default_order_flag: 1,
-		 init: function() {
-			 this.list = new Array;
+		 init: function(list) {
+			 this.list = list;
 		 },
 		 find: function(cond, order) {
 			 if (!cond) cond = new Object;
