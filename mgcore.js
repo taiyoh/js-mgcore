@@ -1,4 +1,9 @@
 (function(global) {
+
+	 function typeCall(ref) {
+		 return Object.prototype.toString.call(ref);
+	 }
+
 	 function MGCoreResult() { this.init.apply(this, arguments); }
 	 MGCoreResult.prototype = {
 		 list: new Array,
@@ -111,7 +116,7 @@
 			 var self = this;
 			 for (var j in cond) {
 				 var ref = cond[j];
-				 var cls = Object.prototype.toString.call(ref);
+				 var cls = typeCall(ref);
 				 if (cls.indexOf('RegExp') >= 0) {
 					 cond[j] = { '$regex': ref };
 				 }
@@ -215,7 +220,7 @@
 				 return ok;
 			 },
 			 '$regex' : function(ref, val) {
-				 if (Object.prototype.toString.call(ref).indexOf('RegExp') >= 0) {
+				 if (typeCall(ref).indexOf('RegExp') >= 0) {
 					 return ref.test(val);
 				 }
 				 else {
